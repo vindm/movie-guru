@@ -4,8 +4,8 @@ const { Context, Telegraf, Markup } = require('telegraf');
 const LocalSession = require('telegraf-session-local')
 
 const API_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
-const PORT = process.env.PORT;
-const HEROKU_URL = process.env.HEROKU_URL;
+const PORT = process.env.PORT || 3000;
+const HEROKU_URL = process.env.HEROKU_URL || 'https://peaceful-brook-79724.herokuapp.com';
 
 const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${HEROKU_URL}/bot${API_TOKEN}`);
