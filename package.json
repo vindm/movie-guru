@@ -2,7 +2,7 @@
   "name": "aibot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "npx nodemon",
     "build": "rimraf ./dist && tsc",
