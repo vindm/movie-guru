@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 const HEROKU_URL = process.env.HEROKU_URL || 'https://peaceful-brook-79724.herokuapp.com';
 
 const bot = new Telegraf(API_TOKEN);
-bot.telegram.setWebhook(`${HEROKU_URL}/bot${API_TOKEN}`);
-bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
+// bot.telegram.setWebhook(`${HEROKU_URL}/bot${API_TOKEN}`);
+// bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
 const openai = new OpenAIApi(new Configuration({
     apiKey: process.env.OPEN_AI_TOKEN,
