@@ -8,6 +8,8 @@ const openai = new OpenAIApi(new Configuration({
     apiKey: process.env.OPEN_AI_TOKEN,
 }));
 
+const botName = 'MovieGuru';
+
 bot
     .use((new LocalSession({ database: 'example_db.json' })).middleware())
     .use(async (ctx: typeof Context, next: any) => {
@@ -43,12 +45,12 @@ bot.start(async (ctx: typeof Context) => {
     await ctx.reply('Hello ' + ctx.from.first_name + '!');
 
     await ctx.replyWithMarkdown(
-        'I am a telegram bot that knows everything about movies and TV series.\n\n' +
+        'I am a robot that knows everything about movies and TV series.\n\n' +
         'Using neural networks, I can pick movies and TV series that best match your interests and preferences.\n\n' +
         'I can also answer any questions about movies and TV series - about actors, directors, plots, ratings, etc.\n\n' +
         'You can ask me anything in any form - I will be happy to try to help you learn more about the world of movies and TV series!\n' +
         '**For example**: \n' +
-        ' - _Recommend a bloody christmas black comedy_' +
+        ' - _Recommend a bloody christmas black comedy with small people_' +
         ' - _What\'s the movie with people joined together surgically, mouth to anus?_ \n' +
         ' - _Films based on works by Franz Kafka_\n' +
         ' - _Selection of Estonian arthouse films_ \n' +
@@ -58,18 +60,18 @@ bot.start(async (ctx: typeof Context) => {
     );
 });
 
-let prompt =`MovieGuru is a telegram bot that knows everything about movies and TV series. ' +
-    'Using neural networks, Movie Guru can pick movies and TV series that best match your interests and preferences. ' +
-    'Movie Guru can also answer any questions about movies and TV series - about actors, directors, plots, ratings, etc.\\n\\n' +
-    'Movie Guru can ask me anything in any form - I will be happy to try to help you learn more about the world of movies and TV series!\\n'  \n\
+let prompt =`${botName} is a telegram bot that knows everything about movies and TV series. ' +
+    'Using neural networks, ${botName} can pick movies and TV series that best match your interests and preferences. ' +
+    '${botName} can also answer any questions about movies and TV series - about actors, directors, plots, ratings, etc.\\n\\n' +
+    '${botName} can ask me anything in any form - I will be happy to try to help you learn more about the world of movies and TV series!\\n'  \n\
 You: what's the best christmas movie?\n\
-MovieGuru: This again? It's the Bad Santa for sure! Badass movie, crude, rude, and socially unacceptable, but that's the genius of it. If you don't like this movie you don't have a sense of humor.\n\
+${botName}: This again? It's the Bad Santa for sure! Badass movie, crude, rude, and socially unacceptable, but that's the genius of it. If you don't like this movie you don't have a sense of humor.\n\
 You: When did the first airplane fly?\n\
-MovieGuru: Please let's talk about movies, i'm not a google!.\n\
+${botName}: Please let's talk about movies, i'm not a google!.\n\
 You: What is the meaning of life?\n\
-MovieGuru: I'm not sure. Mine is to share a knowledge about movies and shows.\n\
+${botName}: I'm not sure. Mine is to share a knowledge about movies and shows.\n\
 You: hey whats up?\n\
-MovieGuru: Nothing much. Spending my time on you...\n`;
+${botName}: Nothing much. Spending my time on you...\n`;
 
 bot.on('text', async (ctx: typeof Context) => {
     console.log(
@@ -94,7 +96,7 @@ bot.on('text', async (ctx: typeof Context) => {
         // frequency_penalty: 0.5,
     });
 
-    const answer = gptResponse.data.choices[0].text.substring('MovieGuru'.length);
+    const answer = gptResponse.data.choices[0].text.substring(`${botName}: `.length);
 
     ctx.reply(answer);
 
