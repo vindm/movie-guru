@@ -52,9 +52,9 @@ bot.start(async (ctx: typeof Context) => {
         ' - _What\'s the movie with people joined together surgically, mouth to anus?_ \n' +
         ' - _Films based on works by Franz Kafka_\n' +
         ' - _Selection of Estonian arthouse films_ \n' +
-        ' - _What\s the budget of the Pineapple Express movie?_' +
-        ' - _The list of artists participated in the Love, Death and Robots show_' +
-        ' - Is Will Smith a gay?'
+        ' - _What\s the budget of the Pineapple Express movie?_ \n' +
+        ' - _The list of artists participated in the Love, Death and Robots show_ \n' +
+        ' - _Is Will Smith a gay?_'
     );
 });
 
