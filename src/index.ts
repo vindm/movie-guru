@@ -14,7 +14,11 @@ bot
     .use((new LocalSession({ database: 'example_db.json' })).middleware())
     .use(async (ctx: typeof Context, next: any) => {
         console.time('Response')
-        await next()
+        try {
+            await next()
+        } catch (e) {
+            console.error(e);
+        }
         console.timeEnd('Response')
     })
     .catch((err: any, ctx: typeof Context) => {
